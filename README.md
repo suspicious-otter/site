@@ -15,3 +15,5 @@ Run development server
 ```bash
 yarn dev
 ```
+
+Then go to `http://localhost:3001` to see it.
