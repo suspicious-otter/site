@@ -2,7 +2,7 @@ import ReactGA from "react-ga";
 import env from "utils/env";
 
 export function isLocal() {
-  return NODE_ENV !== "production";
+  return env.NODE_ENV !== "production";
 }
 
 export function hasInitialized() {
