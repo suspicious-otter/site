@@ -1,8 +1,7 @@
 require("now-env");
 
-const express = require("express");
-const next = require("next");
 const { parse } = require("url");
+const next = require("next");
 
 const { NODE_ENV, PORT = 3001 } = process.env;
 
@@ -11,32 +10,14 @@ const dev = NODE_ENV !== "production";
 const app = next({ dir: ".", dev });
 const handle = app.getRequestHandler();
 
-async function main() {
+async function main(req, res) {
+  const url = parse(req.url, true);
+  return handle(req, res, url);
+}
+
+async function setup(handler) {
   await app.prepare();
-
-  const server = express();
-
-  server.get("*", (req, res) => {
-    return handle(req, res);
-  });
-
-  return new Promise((resolve, reject) => {
-    server.listen(PORT, error => {
-      if (error) return reject(error);
-      return resolve();
-    });
-  });
+  return handler;
 }
 
-function successHandler() {
-  console.log(`> Ready on http://localhost:${PORT}`);
-}
-
-function errorHandler(error) {
-  console.error(error);
-  process.exit(0);
-}
-
-main()
-  .then(successHandler)
-  .catch(errorHandler);
+module.exports = setup(main);

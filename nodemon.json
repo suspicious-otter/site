@@ -1,3 +1,0 @@
-{
-  "watch": ["server/**/*.js", "now.json", "now-secrets.json"]
-}
