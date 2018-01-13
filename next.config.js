@@ -1,11 +1,11 @@
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const BabiliPlugin = require('babili-webpack-plugin');
-const uuid = require('uuid/v4');
+const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
+const BabiliPlugin = require("babili-webpack-plugin");
+const uuid = require("uuid/v4");
 
 module.exports = {
   webpack(config, { dev }) {
     config.plugins = config.plugins.filter(plugin => {
-      return plugin.constructor.name !== 'UglifyJsPlugin';
+      return plugin.constructor.name !== "UglifyJsPlugin";
     });
 
     if (!dev) {
@@ -17,7 +17,7 @@ module.exports = {
           cacheId: uuid(),
           runtimeCaching: [
             {
-              handler: 'networkFirst',
+              handler: "networkFirst",
               urlPattern: /^https?.*/
             }
           ]

@@ -1,14 +1,14 @@
-require('now-env');
+require("now-env");
 
-const express = require('express');
-const next = require('next');
-const { parse } = require('url');
+const express = require("express");
+const next = require("next");
+const { parse } = require("url");
 
 const { NODE_ENV, PORT = 3001 } = process.env;
 
-const dev = NODE_ENV !== 'production';
+const dev = NODE_ENV !== "production";
 
-const app = next({ dir: '.', dev });
+const app = next({ dir: ".", dev });
 const handle = app.getRequestHandler();
 
 async function main() {
@@ -16,7 +16,7 @@ async function main() {
 
   const server = express();
 
-  server.get('*', (req, res) => {
+  server.get("*", (req, res) => {
     return handle(req, res);
   });
 
