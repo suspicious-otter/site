@@ -1,0 +1,74 @@
+[
+  {
+    "method": "GET",
+    "path": "/",
+    "page": "/search",
+    "name": "search"
+  },
+  {
+    "method": "GET",
+    "path": "/roadmap",
+    "page": "/roadmap",
+    "name": "roadmap"
+  },
+  {
+    "method": "GET",
+    "path": "/course/:course",
+    "page": "/course/detail",
+    "name": "course-detail"
+  },
+  {
+    "method": "GET",
+    "path": "/course/:course/material/:material",
+    "page": "/course/material",
+    "name": "course-material"
+  },
+  {
+    "method": "GET",
+    "path": "/course/:course/quiz/:quiz",
+    "page": "/course/quiz",
+    "name": "course-quiz"
+  },
+  {
+    "method": "GET",
+    "path": "/forum",
+    "page": "/forum/board",
+    "name": "forum-board"
+  },
+  {
+    "method": "GET",
+    "path": "/forum/:category",
+    "page": "/forum/category",
+    "name": "forum-category"
+  },
+  {
+    "method": "GET",
+    "path": "/forum/:category/:topic",
+    "page": "/forum/topic",
+    "name": "forum-topic"
+  },
+  {
+    "method": "GET",
+    "path": "/@:user",
+    "page": "/user/profile",
+    "name": "user-profile"
+  },
+  {
+    "method": "GET",
+    "path": "/@:user/edit",
+    "page": "/user/edit",
+    "name": "user-edit"
+  },
+  {
+    "method": "GET",
+    "path": "/notifications",
+    "page": "/user/notifications",
+    "name": "notifications"
+  },
+  {
+    "method": "GET",
+    "path": "/login",
+    "page": "/user/login",
+    "name": "login"
+  }
+]

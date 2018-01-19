@@ -1,23 +1,11 @@
 require("now-env");
 
-const { parse } = require("url");
-const next = require("next");
+const { app } = require("./next.js");
+const router = require("./router.js");
 
-const { NODE_ENV, PORT = 3001 } = process.env;
-
-const dev = NODE_ENV !== "production";
-
-const app = next({ dir: ".", dev });
-const handle = app.getRequestHandler();
-
-async function main(req, res) {
-  const url = parse(req.url, true);
-  return handle(req, res, url);
-}
-
-async function setup(handler) {
+async function setup(handle) {
   await app.prepare();
-  return handler;
+  return handle;
 }
 
-module.exports = setup(main);
+module.exports = setup(router);
