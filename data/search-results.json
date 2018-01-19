@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cjci779js000024nhve4y5g4s",
+    "type": "course",
+    "title": "Fundamentos de JavaScript",
+    "level": "basics",
+    "courseSlug": "fundamentos-js"
+  },
+  {
+    "id": "cjci77k5h000224nhw9hatqah",
+    "type": "material",
+    "title": "Crear y usar una función",
+    "courseSlug": "fundamentos-js",
+    "materialSlug": "crear-funciones"
+  },
+  {
+    "id": "cjci77qbz000424nh9i16qzeq",
+    "type": "material",
+    "title": "Funciones de flecha",
+    "courseSlug": "fundamentos-js",
+    "materialSlug": "funciones-flecha"
+  },
+  {
+    "id": "cjci77uq9000624nhc8n4jtim",
+    "type": "material",
+    "title": "Callbacks",
+    "courseSlug": "fundamentos-js",
+    "materialSlug": "callbacks"
+  },
+  {
+    "id": "cjci780u5000824nhfkv7ihdc",
+    "type": "material",
+    "title": "Closures",
+    "courseSlug": "fundamentos-js",
+    "materialSlug": "closures"
+  },
+  {
+    "id": "cjci785tj000a24nhsgqxq49o",
+    "type": "material",
+    "title": "Patrón Factory",
+    "courseSlug": "fundamentos-js",
+    "materialSlug": "patron-factory"
+  }
+]
