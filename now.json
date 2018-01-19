@@ -1,7 +1,6 @@
 {
-  "name": "site",
+  "name": "edtech-site",
   "env": {
-    "PORT": 3001,
     "NODE_ENV": "@env",
     "GA_ID": "@ga_id"
   }
