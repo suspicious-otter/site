@@ -4,18 +4,20 @@ import classNames from "classnames";
 import accents from "remove-accents";
 import NProgress from "nprogress";
 
-import Main from "layouts/main";
 import SearchForm from "components/search/form";
 import SearchResultItem from "components/search/result-item";
 import { H1, H3 } from "components/ui/heading";
 
 import searchResults from "data/search-results.json";
 
-import { IDLE, FETCHING, ERROR } from "utils/constants";
+import Main from "layouts/main";
+
+import { IDLE, FETCHING } from "utils/constants";
 import delay from "utils/delay";
 import getPage from "utils/get-page";
+import withTimer from "utils/with-timer";
 
-export default class SearchPage extends Component {
+class SearchPage extends Component {
   static async getInitialProps(context) {
     const { query } = context.query;
 
@@ -36,8 +38,8 @@ export default class SearchPage extends Component {
     Router.push(href, as, { shallow: true });
 
     this.setState({ query });
-    if (query.length > 3) this.fetchResults(query);
-    if (query.length <= 3) this.setState({ results: [] });
+    if (query.length > 0) this.fetchResults(query);
+    else this.setState({ results: [] });
   };
 
   handleSubmit = event => {
@@ -46,38 +48,20 @@ export default class SearchPage extends Component {
   };
 
   fetchResults = async query => {
-    if (this.timer) clearTimeout(this.timer);
-
-    this.timer = setTimeout(async () => {
+    this.props.setTimer(async () => {
       this.setState({ status: FETCHING }, NProgress.start);
       await delay(500);
       this.setState({ results: searchResults, status: IDLE }, NProgress.done);
     }, 300);
   };
 
-  get isFetching() {
-    return this.state.status === FETCHING;
-  }
-
-  get hasResults() {
-    return this.state.results.length > 0;
-  }
-
-  get resultCourses() {
-    return this.state.results.filter(result => result.type === "course");
-  }
-
-  get resultMaterials() {
-    return this.state.results.filter(result => result.type === "material");
-  }
-
   render() {
     return (
-      <Main>
+      <Main id="search">
         <section
           id="search-box"
           className={classNames({
-            "has-results": this.hasResults
+            "has-results": this.state.results.length > 0
           })}
         >
           <header>
@@ -91,29 +75,38 @@ export default class SearchPage extends Component {
           />
         </section>
 
-        {this.hasResults && (
+        {this.state.results.length > 0 && (
           <section id="search-results">
             <section id="search-results-courses">
-              <H3>Cursos</H3>
-              {this.resultCourses.map(result => (
-                <article key={result.id}>
-                  <SearchResultItem {...result} />
-                </article>
-              ))}
+              <H3>Courses</H3>
+              {this.state.results
+                .filter(result => result.type === "course")
+                .map(result => (
+                  <article key={result.id}>
+                    <SearchResultItem {...result} />
+                  </article>
+                ))}
             </section>
 
             <section id="search-results-materials">
-              <H3>Materiales</H3>
-              {this.resultMaterials.map(result => (
-                <article key={result.id}>
-                  <SearchResultItem key={result.id} {...result} />
-                </article>
-              ))}
+              <H3>Lessons</H3>
+              {this.state.results
+                .filter(result => result.type === "material")
+                .map(result => (
+                  <article key={result.id}>
+                    <SearchResultItem key={result.id} {...result} />
+                  </article>
+                ))}
             </section>
           </section>
         )}
 
         <style jsx>{`
+          :global(#search) {
+            animation-name: load;
+            animation-duration: 1000ms;
+          }
+
           section {
             max-width: 1000px;
             margin: 0 auto;
@@ -157,13 +150,28 @@ export default class SearchPage extends Component {
             width: 100%;
           }
 
-          #search-results-courses > article,
+          #search-results-courses > article {
+            margin: 2.5%;
+            width: 45%;
+          }
+
           #search-results-materials > article {
             margin: 1.5%;
             width: 30%;
+          }
+
+          @keyframes load {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
           }
         `}</style>
       </Main>
     );
   }
 }
+
+export default withTimer(SearchPage);
