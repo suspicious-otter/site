@@ -20,9 +20,9 @@ export default class extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, ...props } = this.props;
     return (
-      <main>
+      <main {...props}>
         <Head>
           <link rel="stylesheet" href="/static/nprogress.css" />
         </Head>
