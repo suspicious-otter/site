@@ -2,13 +2,16 @@
   "name": "courses-site",
   "version": "1.0.0",
   "main": "server/index.js",
-  "repository": "https://github.com/suspicious-otter/api.git",
-  "author": "Suspicious Otter",
+  "repository": "https://github.com/suspicious-otter/site.git",
   "license": "MIT",
+  "author": "Suspicious Otter",
+  "contributors": [
+    "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com"
+  ],
   "scripts": {
-    "dev": "micro-dev --watch server/index.js",
+    "dev": "micro-dev --watch server/index.js --port 3001",
     "build": "next build",
-    "start": "NODE_ENV=production micro",
+    "start": "NODE_ENV=production micro --port 3001",
     "lint": "eslint",
     "lint:staged": "lint-staged"
   },
@@ -21,7 +24,9 @@
     "data-prefetch-link": "^1.0.4",
     "date-fns": "^1.29.0",
     "micro": "^9.1.0",
+    "micro-route": "^2.5.0",
     "next": "^4.2.1",
+    "next-routes": "^1.2.0",
     "now-env": "^3.0.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
@@ -29,6 +34,7 @@
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.0",
     "recompose": "^0.26.0",
+    "remove-accents": "^0.4.2",
     "sw-precache-webpack-plugin": "^0.11.4",
     "uuid": "^3.1.0"
   },

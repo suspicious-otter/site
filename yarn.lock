@@ -4256,6 +4256,12 @@ micro-dev@^2.2.0:
     pretty-error "2.1.1"
     string-length "2.0.0"
 
+micro-route@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/micro-route/-/micro-route-2.5.0.tgz#4d966b7c9803bbfe085f5e5514389be2d736e5d3"
+  dependencies:
+    url-pattern "^1.0.3"
+
 micro@9.1.0, micro@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/micro/-/micro-9.1.0.tgz#f2effba306639076e994c007c327dfc36a5185e9"
@@ -4461,6 +4467,12 @@ nerf-dart@^1.0.0:
 netrc@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/netrc/-/netrc-0.1.4.tgz#6be94fcaca8d77ade0a9670dc460914c94472444"
+
+next-routes@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.2.0.tgz#be10cd2f3c90421610977e4a12640e2cc75774f4"
+  dependencies:
+    path-to-regexp "^2.1.0"
 
 next@^4.2.1:
   version "4.2.1"
@@ -5006,6 +5018,10 @@ path-to-regexp@^1.0.0, path-to-regexp@^1.0.1:
   dependencies:
     isarray "0.0.1"
 
+path-to-regexp@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.1.0.tgz#7e30f9f5b134bd6a28ffc2e3ef1e47075ac5259b"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -5487,6 +5503,10 @@ regjsparser@^0.1.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
   dependencies:
     jsesc "~0.5.0"
+
+remove-accents@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -6530,6 +6550,10 @@ url-parse-lax@^3.0.0:
   resolved "https://registry.yarnpkg.com/url-parse-lax/-/url-parse-lax-3.0.0.tgz#16b5cafc07dbe3676c1b1999177823d6503acb0c"
   dependencies:
     prepend-http "^2.0.0"
+
+url-pattern@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/url-pattern/-/url-pattern-1.0.3.tgz#0409292471b24f23c50d65a47931793d2b5acfc1"
 
 url-to-options@^1.0.1:
   version "1.0.1"
