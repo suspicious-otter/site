@@ -14,6 +14,13 @@
     "materialSlug": "crear-funciones"
   },
   {
+    "id": "cjclk2qfi000023q2z8vw89a8",
+    "type": "course",
+    "title": "Taller de creación de APIs Rest con Express.js",
+    "level": "basics",
+    "courseSlug": "taller-api-rest-express"
+  },
+  {
     "id": "cjci77qbz000424nh9i16qzeq",
     "type": "material",
     "title": "Funciones de flecha",
