@@ -1,5 +1,5 @@
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
-const BabiliPlugin = require("babili-webpack-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 const uuid = require("uuid/v4");
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
             }
           ]
         }),
-        new BabiliPlugin()
+        new MinifyPlugin()
       );
     }
 

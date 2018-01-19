@@ -19,7 +19,6 @@
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-plugin-transform-assets": "^0.2.0",
-    "babili-webpack-plugin": "^0.1.2",
     "classnames": "^2.2.5",
     "data-prefetch-link": "^1.0.4",
     "date-fns": "^1.29.0",
@@ -40,6 +39,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.4.0",
