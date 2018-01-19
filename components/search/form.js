@@ -1,12 +1,13 @@
 export default ({ onChange, onSubmit, value }) => (
   <form onSubmit={onSubmit}>
-    <label htmlFor="query">¿Qué quieres aprender?</label>
+    <label htmlFor="query">What do you want to learn?</label>
     <input
       name="query"
       id="query"
       onChange={onChange}
       value={value}
       type="search"
+      autoFocus
     />
 
     <style jsx>{`
