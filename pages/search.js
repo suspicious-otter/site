@@ -1,5 +1,7 @@
 import { Component } from "react";
+import Link from "next/link";
 import Router from "next/router";
+import Head from "next/head";
 import classNames from "classnames";
 import accents from "remove-accents";
 import NProgress from "nprogress";
@@ -34,10 +36,10 @@ class SearchPage extends Component {
   handleChange = event => {
     const query = accents.remove(event.target.value);
 
-    const { href, as } = getPage("search", {}, { query });
-    Router.push(href, as, { shallow: true });
+    this.updateURL(query);
 
     this.setState({ query });
+
     if (query.length > 0) this.fetchResults(query);
     else this.setState({ results: [] });
   };
@@ -47,17 +49,25 @@ class SearchPage extends Component {
     this.fetchResults(this.state.query);
   };
 
-  fetchResults = async query => {
+  updateURL = query => {
+    const { href, as } = getPage("search", {}, { query });
+    Router.replace(href, as, { shallow: true });
+  };
+
+  fetchResults = async query =>
     this.props.setTimer(async () => {
       this.setState({ status: FETCHING }, NProgress.start);
       await delay(500);
       this.setState({ results: searchResults, status: IDLE }, NProgress.done);
     }, 300);
-  };
 
   render() {
     return (
       <Main id="search">
+        <Head>
+          <title>EdTech</title>
+        </Head>
+
         <section
           id="search-box"
           className={classNames({
@@ -65,8 +75,13 @@ class SearchPage extends Component {
           })}
         >
           <header>
-            <H1>EdTech</H1>
+            <H1>
+              <Link href="/search" as="/">
+                <a>EdTech</a>
+              </Link>
+            </H1>
           </header>
+
           <SearchForm
             placeholder="¿Qué quieres aprender?"
             value={this.state.query}
@@ -133,6 +148,11 @@ class SearchPage extends Component {
             left: 0;
             right: 0;
             text-align: center;
+          }
+
+          header a {
+            color: black;
+            text-decoration: none;
           }
 
           #search-results-courses,
