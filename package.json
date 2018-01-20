@@ -12,7 +12,7 @@
     "dev": "micro-dev --watch server/index.js --port 3001",
     "build": "next build",
     "start": "NODE_ENV=production micro --port 3001",
-    "lint": "eslint",
+    "lint": "eslint 'utils/**/*.js' 'server/**/*.js' 'pages/**/*.js' 'layouts/**/*.js' 'components/**/*.js'",
     "lint:staged": "lint-staged"
   },
   "dependencies": {
@@ -20,15 +20,11 @@
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-plugin-transform-assets": "^0.2.0",
     "classnames": "^2.2.5",
-    "data-prefetch-link": "^1.0.4",
-    "date-fns": "^1.29.0",
     "micro": "^9.1.0",
     "micro-route": "^2.5.0",
     "next": "^4.2.1",
-    "next-routes": "^1.2.0",
     "now-env": "^3.0.2",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.0",
@@ -50,7 +46,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint",
+      "npm run lint",
       "prettier",
       "git add"
     ]
