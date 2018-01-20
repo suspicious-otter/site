@@ -54,12 +54,14 @@ class SearchPage extends Component {
     Router.replace(href, as, { shallow: true });
   };
 
-  fetchResults = async query =>
+  fetchResults = async query => {
+    if (query.length === 0) return this.setState({ results: [] });
     this.props.setTimer(async () => {
       this.setState({ status: FETCHING }, NProgress.start);
       await delay(500);
       this.setState({ results: searchResults, status: IDLE }, NProgress.done);
     }, 300);
+  };
 
   render() {
     return (
