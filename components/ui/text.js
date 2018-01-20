@@ -1,21 +1,15 @@
-import * as colors from "../../lib/colors";
-import parseUrl from "../../lib/parse-url";
-
 export function A({
   color = "black",
   decoration = "none",
   children,
   ...props
 }) {
-  const { hostname } = parseUrl(props.href);
-  const self = hostname === "sergiodxa.com";
-
   return (
-    <a {...props} target={!self ? "_blank" : "_self"}>
+    <a {...props}>
       {children}
       <style jsx>{`
         a {
-          color: ${colors[color]};
+          color: ${color};
           text-decoration: ${decoration};
         }
       `}</style>
