@@ -1,5 +1,5 @@
+import Link from "next/link";
 import classNames from "classnames";
-import Link from "data-prefetch-link";
 
 import { H5, H6 } from "components/ui/heading";
 
@@ -34,21 +34,24 @@ export default ({ id, type, title, level, courseSlug, materialSlug }) => (
         }
 
         div {
-          background-color: white;
-          border: 1px solid gray;
+          background-color: black;
+          border: 0.125em solid black;
+          border-radius: 0.25em;
           box-sizing: border-box;
+          color: white;
           display: flex;
           justify-content: center;
           align-items: center;
           text-align: center;
+          transition: all 0.15s;
           padding: 1em;
           height: 100px;
           width: 100%;
         }
         div:hover {
-          background-color: black;
+          background-color: white;
           border-color: black;
-          color: white;
+          color: black;
         }
 
         div.isCourse {

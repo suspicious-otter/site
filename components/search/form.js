@@ -1,6 +1,7 @@
 export default ({ onChange, onSubmit, value }) => (
   <form onSubmit={onSubmit}>
     <label htmlFor="query">What do you want to learn?</label>
+
     <input
       name="query"
       id="query"
