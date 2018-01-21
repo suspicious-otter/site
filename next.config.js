@@ -1,13 +1,8 @@
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
-const MinifyPlugin = require("babel-minify-webpack-plugin");
 const uuid = require("uuid/v4");
 
 module.exports = {
   webpack(config, { dev }) {
-    config.plugins = config.plugins.filter(plugin => {
-      return plugin.constructor.name !== "UglifyJsPlugin";
-    });
-
     if (!dev) {
       config.plugins.push(
         new SWPrecacheWebpackPlugin({
@@ -21,8 +16,7 @@ module.exports = {
               urlPattern: /^https?.*/
             }
           ]
-        }),
-        new MinifyPlugin()
+        })
       );
     }
 
