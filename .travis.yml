@@ -10,9 +10,11 @@ before_deploy: npm install now --no-save
 deploy:
   - provider: script
     script: now --token=$TOKEN --team=edtech
+    skip_cleanup: true
     on:
       all_branches: true
   - provider: script
     script: now alias --token=$TOKEN --team=edtech
+    skip_cleanup: true
     on:
       branch: master
