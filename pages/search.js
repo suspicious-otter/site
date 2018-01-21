@@ -85,7 +85,6 @@ class SearchPage extends Component {
           </header>
 
           <SearchForm
-            placeholder="¿Qué quieres aprender?"
             value={this.state.query}
             onChange={this.handleChange}
             onSubmit={this.handleSubmit}
