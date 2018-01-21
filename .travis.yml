@@ -9,10 +9,10 @@ script: npm run build
 before_deploy: npm install now --no-save
 deploy:
   - provider: script
-    script: now --token=$TOKEN
+    script: now --token=$TOKEN --team=edtech
     on:
       all_branches: true
   - provider: script
-    script: now alias --token=$TOKEN
+    script: now alias --token=$TOKEN --team=edtech
     on:
       branch: master

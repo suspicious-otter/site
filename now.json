@@ -1,5 +1,6 @@
 {
   "name": "edtech-site",
+  "alias": "edtech-site.now.sh",
   "files": [
     ".next",
     "server",
