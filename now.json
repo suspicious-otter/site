@@ -4,7 +4,9 @@
   "files": [
     ".next",
     "server",
-    "package.json"
+    "static",
+    "package.json",
+    "yarn.lock"
   ],
   "env": {
     "NODE_ENV": "@env"
