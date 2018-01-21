@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "node"
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+script: npm run build
+before_deploy: npm install now --no-save
+deploy:
+  - provider: script
+    script: now --token=$TOKEN
+    on:
+      all_branches: true
+  - provider: script
+    script: now alias --token=$TOKEN
+    on:
+      branch: master

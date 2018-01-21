@@ -1,7 +1,11 @@
 {
   "name": "edtech-site",
+  "files": [
+    ".next",
+    "server",
+    "package.json"
+  ],
   "env": {
-    "NODE_ENV": "@env",
-    "GA_ID": "@ga_id"
+    "NODE_ENV": "@env"
   }
 }
