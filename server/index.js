@@ -1,11 +1,12 @@
 require("now-env");
 
-const { app } = require("./next.js");
-const router = require("./router.js");
+const microNext = require("micro-next");
+const routes = require("./routes.json");
 
-async function setup(handle) {
-  await app.prepare();
-  return handle;
-}
-
-module.exports = setup(router);
+module.exports = microNext({
+  routes,
+  nextConfig: {
+    dir: ".",
+    dev: process.env.NODE_ENV !== "production"
+  }
+});
