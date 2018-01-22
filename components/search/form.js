@@ -1,6 +1,10 @@
-export default ({ onChange, onSubmit, value }) => (
+import { H1 } from "components/ui/heading";
+
+export default ({ onChange, onSubmit, value = "" }) => (
   <form onSubmit={onSubmit}>
-    <label htmlFor="query">What do you want to learn?</label>
+    <label htmlFor="query">
+      <H1>What do you want to learn?</H1>
+    </label>
 
     <input
       name="query"
@@ -13,7 +17,7 @@ export default ({ onChange, onSubmit, value }) => (
 
     <style jsx>{`
       form {
-        font-size: 1.5em;
+        font-size: 1em;
         width: 80%;
       }
 
@@ -28,7 +32,7 @@ export default ({ onChange, onSubmit, value }) => (
         border-bottom: 2px solid lightgrey;
         box-sizing: border-box;
         display: block;
-        font-size: 1em;
+        font-size: 1.5em;
         outline: none;
         padding: 0.5em 1em;
         transition: all 0.3s;
