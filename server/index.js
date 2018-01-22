@@ -1,7 +1,7 @@
 require("now-env");
 
 const microNext = require("micro-next");
-const routes = require("./routes.json");
+const routes = require("../data/routes.json");
 
 module.exports = microNext({
   routes,

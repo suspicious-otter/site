@@ -25,17 +25,17 @@
     "name": "course-quiz"
   },
   {
-    "path": "/forum",
+    "path": "/community",
     "page": "/forum/board",
     "name": "forum-board"
   },
   {
-    "path": "/forum/:category",
+    "path": "/community/:category",
     "page": "/forum/category",
     "name": "forum-category"
   },
   {
-    "path": "/forum/:category/:topic",
+    "path": "/community/:category/:topic",
     "page": "/forum/topic",
     "name": "forum-topic"
   },
