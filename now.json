@@ -3,6 +3,7 @@
   "alias": "edtech-site.now.sh",
   "files": [
     ".next",
+    "data",
     "server",
     "static",
     "package.json",
