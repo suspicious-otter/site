@@ -5,6 +5,7 @@ import Head from "next/head";
 import classNames from "classnames";
 import accents from "remove-accents";
 import NProgress from "nprogress";
+import Transition from "react-transition-group/Transition";
 
 import SearchForm from "components/search/form";
 import SearchResultItem from "components/search/result-item";
@@ -21,7 +22,7 @@ import withTimer from "utils/with-timer";
 
 class SearchPage extends Component {
   static async getInitialProps(context) {
-    const { query } = context.query;
+    const { query = "" } = context.query;
 
     if (query) return { query, results: searchResults };
     return { query, results: [] };
@@ -32,6 +33,13 @@ class SearchPage extends Component {
     results: this.props.results,
     status: IDLE
   };
+
+  componentWillReceiveProps(nextProps) {
+    const { query = "" } = nextProps.url.query;
+    if (this.props.url.query.query !== query && this.state.query !== query) {
+      this.setState({ query }, () => this.fetchResults(query));
+    }
+  }
 
   handleChange = event => {
     const query = accents.remove(event.target.value);
@@ -51,7 +59,7 @@ class SearchPage extends Component {
 
   updateURL = query => {
     const { href, as } = getPage("search", {}, { query });
-    Router.replace(href, as, { shallow: true });
+    Router.push(href, as, { shallow: true });
   };
 
   fetchResults = async query => {
@@ -65,25 +73,16 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <Main id="search">
+      <Main page="search">
         <Head>
-          <title>EdTech</title>
+          {this.state.query.length > 0 ? (
+            <title>EdTeach - Searching for {this.state.query}</title>
+          ) : (
+            <title>EdTech</title>
+          )}
         </Head>
 
-        <section
-          id="search-box"
-          className={classNames({
-            "has-results": this.state.results.length > 0
-          })}
-        >
-          <header>
-            <H1>
-              <Link href="/search" as="/">
-                <a>EdTech</a>
-              </Link>
-            </H1>
-          </header>
-
+        <section id="search-box">
           <SearchForm
             value={this.state.query}
             onChange={this.handleChange}
@@ -91,69 +90,72 @@ class SearchPage extends Component {
           />
         </section>
 
-        {this.state.results.length > 0 && (
-          <section id="search-results">
-            <section id="search-results-courses">
-              <H3>Courses</H3>
-              {this.state.results
-                .filter(result => result.type === "course")
-                .map(result => (
-                  <article key={result.id}>
-                    <SearchResultItem {...result} />
-                  </article>
-                ))}
-            </section>
+        <Transition
+          in={this.state.results.length > 0}
+          timeout={300}
+          mountOnEnter
+          unmountOnExit
+          exit={false}
+        >
+          {state => (
+            <section id="search-results" className={state}>
+              <section id="search-results-courses">
+                <H3>Courses</H3>
+                {this.state.results
+                  .filter(result => result.type === "course")
+                  .map(result => (
+                    <article key={result.id}>
+                      <SearchResultItem {...result} />
+                    </article>
+                  ))}
+              </section>
 
-            <section id="search-results-materials">
-              <H3>Lessons</H3>
-              {this.state.results
-                .filter(result => result.type === "material")
-                .map(result => (
-                  <article key={result.id}>
-                    <SearchResultItem key={result.id} {...result} />
-                  </article>
-                ))}
+              <section id="search-results-materials">
+                <H3>Lessons</H3>
+                {this.state.results
+                  .filter(result => result.type === "material")
+                  .map(result => (
+                    <article key={result.id}>
+                      <SearchResultItem key={result.id} {...result} />
+                    </article>
+                  ))}
+              </section>
             </section>
-          </section>
-        )}
+          )}
+        </Transition>
 
         <style jsx>{`
-          :global(#search) {
-            animation-name: load;
-            animation-duration: 1000ms;
+          #search-box {
+            width: 100%;
           }
 
-          section {
-            max-width: 1000px;
-            margin: 0 auto;
+          #search-results {
+            transition: all 300ms ease-in-out;
+            opacity: 0;
+            width: 100%;
+          }
+
+          #search-results.entering {
+            opacity: 0;
+          }
+
+          #search-results.entered {
+            opacity: 1;
+          }
+
+          #search-results.exiting {
+            opacity: 1;
+          }
+
+          #searct-results.exited {
+            opacity: 0;
           }
 
           #search-box {
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             position: relative;
-            transition: all 0.5s;
-            height: 100vh;
-          }
-
-          #search-box.has-results {
-            padding-top: 10em;
-            height: 20vh;
-          }
-
-          header {
-            position: absolute;
-            top: 0.5em;
-            left: 0;
-            right: 0;
-            text-align: center;
-          }
-
-          header a {
-            color: black;
-            text-decoration: none;
           }
 
           #search-results-courses,
@@ -172,22 +174,13 @@ class SearchPage extends Component {
           }
 
           #search-results-courses > article {
-            margin: 2.5%;
+            margin: 2em 2.5%;
             width: 45%;
           }
 
           #search-results-materials > article {
-            margin: 1.5%;
+            margin: 1em 1.5%;
             width: 30%;
-          }
-
-          @keyframes load {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
           }
         `}</style>
       </Main>
