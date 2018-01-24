@@ -5,6 +5,8 @@ import { isLocal, hasInitialized, initGA, logPageView } from "utils/analytics";
 import Header from "components/layout/header";
 import Footer from "components/layout/footer";
 
+import * as colors from "utils/colors";
+
 export default class extends Component {
   componentDidMount() {
     if (isLocal()) return;
@@ -22,6 +24,15 @@ export default class extends Component {
       <main {...props}>
         <Head>
           <link rel="stylesheet" href="/static/nprogress.css" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta name="HandheldFriendly" content="True" />
+          <meta name="MobileOptimized" content="320" />
+          <meta name="theme-color" content={colors.black} />
+          <meta content="IE=edge,chrome=1" httpEquiv="X-UA-Compatible" />
         </Head>
 
         <Header page={props.page} />
@@ -49,16 +60,12 @@ export default class extends Component {
           main {
             max-width: 62em;
             margin: 0 auto;
-
-            animation-name: load;
-            animation-duration: 1000ms;
             display: grid;
             min-height: 100vh;
             grid-template-areas:
               "header"
               "content"
               "footer";
-            grid-template-rows: 60px auto auto;
             grid-column: 1;
             grid-row: 3;
             transition: all 300ms;
@@ -66,6 +73,9 @@ export default class extends Component {
 
           #content {
             grid-area: content;
+
+            animation-name: load;
+            animation-duration: 1000ms;
           }
 
           @keyframes load {
