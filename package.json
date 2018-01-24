@@ -22,6 +22,7 @@
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-plugin-transform-assets": "^0.2.0",
     "classnames": "^2.2.5",
+    "date-fns": "^1.29.0",
     "micro": "^9.1.0",
     "micro-next": "^1.0.0",
     "micro-route": "^2.5.0",
