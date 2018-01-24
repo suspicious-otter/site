@@ -1,3 +1,5 @@
+import * as colors from "utils/colors";
+
 export function A({
   color = "black",
   decoration = "none",
@@ -9,7 +11,7 @@ export function A({
       {children}
       <style jsx>{`
         a {
-          color: ${color};
+          color: ${colors[color]};
           text-decoration: ${decoration};
         }
       `}</style>
