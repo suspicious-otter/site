@@ -56,6 +56,7 @@ function NavBar({ page }) {
           align-items: center;
           padding-left: 0;
           line-height: 2;
+          flex-direction: column;
         }
         li {
           margin: 0 0.5em;
@@ -69,6 +70,11 @@ function NavBar({ page }) {
         }
         li:last-child {
           margin-right: 1em;
+        }
+        @media (min-width: 720px) {
+          ul {
+            flex-direction: row;
+          }
         }
       `}</style>
     </nav>

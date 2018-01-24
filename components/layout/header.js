@@ -20,12 +20,19 @@ export default ({ page }) => (
       header {
         grid-area: header;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
       }
 
       header a {
         color: black;
         text-decoration: none;
+      }
+
+      @media (min-width: 720px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+        }
       }
     `}</style>
   </header>
