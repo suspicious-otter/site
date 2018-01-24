@@ -174,13 +174,24 @@ class SearchPage extends Component {
           }
 
           #search-results-courses > article {
-            margin: 2em 2.5%;
-            width: 45%;
+            margin: 1em 2.5%;
+            width: 95%;
           }
 
           #search-results-materials > article {
-            margin: 1em 1.5%;
-            width: 30%;
+            margin: 1em 2.5%;
+            width: 45%;
+          }
+
+          @media (min-width: 720px) {
+            #search-results-courses > article {
+              width: 45%;
+            }
+
+            #search-results-materials > article {
+              margin: 1em 1.5%;
+              width: 30%;
+            }
           }
         `}</style>
       </Main>
