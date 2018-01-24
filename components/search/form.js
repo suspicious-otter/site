@@ -1,4 +1,5 @@
 import { H1 } from "components/ui/heading";
+import * as colors from "utils/colors";
 
 export default ({ onChange, onSubmit, value = "" }) => (
   <form onSubmit={onSubmit}>
@@ -29,7 +30,7 @@ export default ({ onChange, onSubmit, value = "" }) => (
 
       input {
         border: none;
-        border-bottom: 2px solid lightgrey;
+        border-bottom: 2px solid ${colors.grey};
         box-sizing: border-box;
         display: block;
         font-size: 1.5em;
@@ -40,7 +41,7 @@ export default ({ onChange, onSubmit, value = "" }) => (
       }
 
       input:focus {
-        border-bottom-color: black;
+        border-bottom-color: ${colors.black};
       }
     `}</style>
   </form>
