@@ -8,6 +8,7 @@ import NProgress from "nprogress";
 import Transition from "react-transition-group/Transition";
 
 import SearchForm from "components/search/form";
+import SearchResultList from "components/search/result-list";
 import SearchResultItem from "components/search/result-item";
 import { H1, H3 } from "components/ui/heading";
 
@@ -73,7 +74,7 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <Main page="search">
+      <Main page="search" animation="fadeIn" animationDuration={100}>
         <Head>
           {this.state.query.length > 0 ? (
             <title>EdTeach - Searching for {this.state.query}</title>
@@ -99,33 +100,39 @@ class SearchPage extends Component {
         >
           {state => (
             <section id="search-results" className={state}>
-              <section id="search-results-courses">
-                <H3>Courses</H3>
-                {this.state.results
-                  .filter(result => result.type === "course")
-                  .map(result => (
-                    <article key={result.id}>
-                      <SearchResultItem {...result} />
-                    </article>
-                  ))}
-              </section>
+              <SearchResultList
+                list={this.state.results.filter(
+                  result => result.type === "course"
+                )}
+                title="Courses"
+                item={result => (
+                  <article key={result.id} className="courses">
+                    <SearchResultItem {...result} />
+                  </article>
+                )}
+              />
 
-              <section id="search-results-materials">
-                <H3>Lessons</H3>
-                {this.state.results
-                  .filter(result => result.type === "material")
-                  .map(result => (
-                    <article key={result.id}>
-                      <SearchResultItem key={result.id} {...result} />
-                    </article>
-                  ))}
-              </section>
+              <SearchResultList
+                list={this.state.results.filter(
+                  result => result.type === "material"
+                )}
+                title="Lessons"
+                item={result => (
+                  <article key={result.id} className="lessons">
+                    <SearchResultItem {...result} />
+                  </article>
+                )}
+              />
             </section>
           )}
         </Transition>
 
         <style jsx>{`
           #search-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             width: 100%;
           }
 
@@ -137,10 +144,12 @@ class SearchPage extends Component {
 
           #search-results.entering {
             opacity: 0;
+            transform: translateY(25vh);
           }
 
           #search-results.entered {
             opacity: 1;
+            transform: translateY(0);
           }
 
           #search-results.exiting {
@@ -151,44 +160,22 @@ class SearchPage extends Component {
             opacity: 0;
           }
 
-          #search-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-          }
-
-          #search-results-courses,
-          #search-results-materials {
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1em 0;
-          }
-
-          #search-results-courses > :global(h3),
-          #search-results-materials > :global(h3) {
-            text-align: center;
-            width: 100%;
-          }
-
-          #search-results-courses > article {
+          #search-results .courses {
             margin: 1em 2.5%;
             width: 95%;
           }
 
-          #search-results-materials > article {
+          #search-results .lessons {
             margin: 1em 2.5%;
             width: 45%;
           }
 
           @media (min-width: 720px) {
-            #search-results-courses > article {
+            #search-results .courses {
               width: 45%;
             }
 
-            #search-results-materials > article {
+            #search-results .lessons {
               margin: 1em 1.5%;
               width: 30%;
             }
