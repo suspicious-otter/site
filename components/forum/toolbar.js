@@ -19,7 +19,6 @@ export default () => {
           <option value="popular">Popular</option>
           <option value="newest">Newest</option>
           <option value="unanswered">Unanswered</option>
-          <option value="featured">Featured</option>
         </select>
       </div>
 
