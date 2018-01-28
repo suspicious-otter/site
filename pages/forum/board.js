@@ -16,7 +16,7 @@ class ForumBoard extends Component {
 
   render() {
     return (
-      <Main page="forum-board">
+      <Main page="forum-board" animation="fadeIn slideUp">
         <Head>
           <title>EdTech - Community</title>
         </Head>
