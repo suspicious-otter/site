@@ -6,26 +6,24 @@
   "license": "MIT",
   "author": "EdTech Team",
   "contributors": [
-    "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com"
+    "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)"
   ],
   "scripts": {
     "dev": "micro-dev --watch server/index.js --port 3001",
     "build": "next build",
     "start": "NODE_ENV=production micro --port 3001",
-    "lint": "eslint 'utils/**/*.js' 'server/**/*.js' 'pages/**/*.js' 'layouts/**/*.js' 'components/**/*.js'",
+    "lint":
+      "eslint 'utils/**/*.js' 'server/**/*.js' 'pages/**/*.js' 'layouts/**/*.js' 'components/**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
     "lint:staged": "lint-staged",
     "test": "echo 'No test defined'",
     "now-build": "echo 'Built on Travis'"
   },
   "dependencies": {
-    "babel-plugin-lodash": "^3.3.2",
-    "babel-plugin-module-resolver": "^3.0.0",
-    "babel-plugin-transform-assets": "^0.2.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
     "micro": "^9.1.0",
     "micro-next": "^1.0.0",
-    "micro-route": "^2.5.0",
     "next": "^4.2.1",
     "now-env": "^3.0.2",
     "nprogress": "^0.2.0",
@@ -34,26 +32,25 @@
     "react-ga": "^2.4.0",
     "react-transition-group": "^2.2.1",
     "recompose": "^0.26.0",
-    "remove-accents": "^0.4.2",
-    "sw-precache-webpack-plugin": "^0.11.4",
-    "uuid": "^3.1.0"
+    "remove-accents": "^0.4.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-assets": "^0.2.0",
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.4.0",
     "lint-staged": "^6.0.0",
     "micro-dev": "^2.2.0",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.9.2"
+    "prettier": "^1.9.2",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "uuid": "^3.1.0"
   },
   "lint-staged": {
-    "*.js": [
-      "npm run lint",
-      "prettier",
-      "git add"
-    ]
+    "*.js": ["npm run lint:fix", "git add"]
   },
   "pre-commit": "lint:staged"
 }
