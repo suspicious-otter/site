@@ -1,7 +1,7 @@
 {
   "name": "edtech-site",
   "alias": "edtech-site.now.sh",
-  "type": "node",
+  "type": "npm",
   "public": true,
   "files": [
     ".next",
