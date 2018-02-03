@@ -16,7 +16,7 @@ function NavBar({ page }) {
           </Link>
         </li>
         <li>
-          <Link {...getPage("forum-board")} prefetch>
+          <Link {...getPage("forum-board", {}, { filter: "newest" })} prefetch>
             <a className={className(page, "forum-board")}>Community</a>
           </Link>
         </li>
