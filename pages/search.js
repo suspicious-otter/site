@@ -72,15 +72,17 @@ class SearchPage extends Component {
     }, 300);
   };
 
+  getTitle(queryLength) {
+    return queryLength > 0
+      ? `EdTeach - Searching for ${this.state.query}`
+      : "EdTech";
+  }
+
   render() {
     return (
       <Main page="search" animation="fadeIn" animationDuration={100}>
         <Head>
-          {this.state.query.length > 0 ? (
-            <title>EdTeach - Searching for {this.state.query}</title>
-          ) : (
-            <title>EdTech</title>
-          )}
+          <title>{this.getTitle(this.state.query.length)}</title>
         </Head>
 
         <section id="search-box">
