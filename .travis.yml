@@ -9,7 +9,7 @@ script: npm run build
 before_deploy: npm install now --no-save
 deploy:
   - provider: script
-    script: now --token=$TOKEN --team=edtech
+    script: now --token=$TOKEN --team=edtech --public
     skip_cleanup: true
     on:
       all_branches: true
