@@ -1,5 +1,5 @@
 import { H1 } from "components/ui/heading";
-import * as colors from "utils/colors";
+import { Input } from "components/ui/form";
 
 export default ({ onChange, onSubmit, value = "" }) => (
   <form onSubmit={onSubmit}>
@@ -7,7 +7,7 @@ export default ({ onChange, onSubmit, value = "" }) => (
       <H1>What do you want to learn?</H1>
     </label>
 
-    <input
+    <Input
       name="query"
       id="query"
       onChange={onChange}
@@ -26,22 +26,6 @@ export default ({ onChange, onSubmit, value = "" }) => (
         display: block;
         padding: 0 1em;
         width: 100%;
-      }
-
-      input {
-        border: none;
-        border-bottom: 2px solid ${colors.grey};
-        box-sizing: border-box;
-        display: block;
-        font-size: 1.5em;
-        outline: none;
-        padding: 0.5em 1em;
-        transition: all 0.3s;
-        width: 100%;
-      }
-
-      input:focus {
-        border-bottom-color: ${colors.black};
       }
     `}</style>
   </form>
